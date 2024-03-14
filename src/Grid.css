@@ -1,0 +1,46 @@
+body {
+    font-family: Arial Rounded MT Bold;
+  }
+
+.grid {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .grid-row {
+    display: flex;
+  }
+  
+  .grid-cell {
+    width: 20px;
+    height: 20px;
+    border: 1px solid grey;
+    background-color: white;
+  }
+  
+  .grid-cell.selected {
+    background-color: black;
+  }
+
+  button {
+    font-family: Arial Rounded MT Bold;
+    font-size: 1.0em;
+    padding: 8px 16px;
+    margin-top: 8px;
+    margin-right: 8px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  .selected-count {
+    color: #007bff;
+    font-size: 1.2em;
+  }
+  
