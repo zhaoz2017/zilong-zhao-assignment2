@@ -44,3 +44,7 @@ body {
     font-size: 1.2em;
   }
   
+  .heatmap-checkbox {
+    margin-left: 8px;
+    color: #007bff;
+  }
