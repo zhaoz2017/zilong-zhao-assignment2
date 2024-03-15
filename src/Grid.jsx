@@ -6,7 +6,7 @@ const Grid = ({ rows = 20, cols = 20 }) => {
     const newGrid = Array(rows).fill(null).map(() => 
     Array(cols).fill(null).map(() => ({
         alive: Math.random() < 0.05,
-        roundsSinceLastAlive: 0,}))
+        iterationsSinceLastAlive: -2}))
     );
     const selected = newGrid.flat().filter(cell => cell.alive).length; // 新增：计算选中的单元格数量
     return { grid: newGrid, selectedCount: selected };
@@ -50,13 +50,22 @@ const Grid = ({ rows = 20, cols = 20 }) => {
         const neighbors = countNeighbors(grid, x, y);
         let newAliveState = cell.alive;
         let iterations = cell.iterationsSinceLastAlive;
-
+        
         if (cell.alive) {
           newAliveState = neighbors === 2 || neighbors === 3;
-          iterations = newAliveState ? 0 : iterations + 1;
+          if (!newAliveState) {
+            iterations = 1;
+          }
         } else {
           newAliveState = neighbors === 3;
-          iterations = newAliveState ? 0 : iterations + 1;
+          if (newAliveState) {
+            iterations = 0;
+          } else {
+            if (iterations != -2) {
+              iterations += 1;
+            }
+          }
+        
         }
 
         return {
