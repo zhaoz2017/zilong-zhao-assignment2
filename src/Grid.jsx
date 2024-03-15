@@ -94,9 +94,9 @@ const Grid = ({ rows = 20, cols = 20 }) => {
 
   const toggleCellState = (x, y) => {
     const newGrid = [...grid];
-    newGrid[x][y] = !newGrid[x][y];
+    newGrid[x][y].alive = !newGrid[x][y].alive;
     setGrid(newGrid);
-    const newSelectedCount = newGrid.flat().filter(cell => cell).length;
+    const newSelectedCount = newGrid.flat().filter(cell => cell.alive).length;
     setSelectedCount(newSelectedCount);
   };
 
