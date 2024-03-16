@@ -1,34 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import { useGridContext } from '../contexts/GridContext';
 import './Grid.css';
 
 const Grid = ({ rows = 20, cols = 20 }) => {
+
+  const { grid, updateGrid, selectedCount, isHeatMapEnabled, toggleHeatMap } = useGridContext();
+
   const createGrid = () => {
     const newGrid = Array(rows).fill(null).map(() => 
     Array(cols).fill(null).map(() => ({
         alive: Math.random() < 0.05,
         iterationsSinceLastAlive: -2}))
     );
-    const selected = newGrid.flat().filter(cell => cell.alive).length; // 新增：计算选中的单元格数量
-    return { grid: newGrid, selectedCount: selected };
+    updateGrid(newGrid); // Update the global state
   };
-
-  const initialGridData = createGrid();
-  const [grid, setGrid] = useState(initialGridData.grid);
-  const [selectedCount, setSelectedCount] = useState(initialGridData.selectedCount);
-  const [isHeatMapEnabled, setIsHeatMapEnabled] = useState(false);
 
   useEffect(() => {
-    const { grid: newGrid, selectedCount: newSelectedCount } = createGrid();
-    setGrid(newGrid);
-    setSelectedCount(newSelectedCount);
+    createGrid();
   }, [rows, cols]);
 
-  const resetGrid = () => {
-    const { grid: newGrid, selectedCount: newSelectedCount } = createGrid();
-    setGrid(newGrid);
-    setSelectedCount(newSelectedCount); 
-  };
-  
 
   const countNeighbors = (grid, x, y) => {
     let count = 0;
@@ -95,23 +85,15 @@ const Grid = ({ rows = 20, cols = 20 }) => {
 
   const handleNext = () => {
     const newGrid = getNextGeneration(grid);
-    setGrid(newGrid);
-  
-    const newSelectedCount = newGrid.flat().filter(cell => cell.alive).length;
-    setSelectedCount(newSelectedCount);
+    updateGrid(newGrid);
   };
 
   const toggleCellState = (x, y) => {
     const newGrid = [...grid];
     newGrid[x][y].alive = !newGrid[x][y].alive;
-    setGrid(newGrid);
-    const newSelectedCount = newGrid.flat().filter(cell => cell.alive).length;
-    setSelectedCount(newSelectedCount);
+    updateGrid(newGrid);
   };
 
-  const toggleHeatMapEnable = () => {
-    setIsHeatMapEnabled(!isHeatMapEnabled);
-  };
 
   return (
     <div>
@@ -130,12 +112,12 @@ const Grid = ({ rows = 20, cols = 20 }) => {
           </div>
         ))}
       </div>
-      <button onClick={resetGrid}>Reset</button>
+      <button onClick={createGrid}>Reset</button>
       <button onClick={handleNext}>Next</button>
-      <label className="heatmap-checkbox">
+      <label htmlFor="heatmapCheckbox" className="heatmap-checkbox" >
         Select to Enable Heatmap 
       </label>
-      <input type="checkbox" checked={isHeatMapEnabled} onChange={toggleHeatMapEnable} />
+      <input id="heatmapCheckbox" type="checkbox" checked={isHeatMapEnabled} onChange={toggleHeatMap} />
       
 
 
