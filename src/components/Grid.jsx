@@ -5,7 +5,7 @@ import './Grid.css';
 const Grid = ({ rows = 20, cols = 20 }) => {
 
   const { grid, updateGrid, selectedCount, isHeatMapEnabled, toggleHeatMap } = useGridContext();
-
+  const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   const createGrid = () => {
     const newGrid = Array(rows).fill(null).map(() => 
     Array(cols).fill(null).map(() => ({
@@ -19,6 +19,19 @@ const Grid = ({ rows = 20, cols = 20 }) => {
     createGrid();
   }, [rows, cols]);
 
+  useEffect(() => {
+    let interval;
+    if (isAutoPlaying) {
+      interval = setInterval(() => {
+        handleNext();
+      }, 100);
+    }
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, grid]);
+
+  const toggleAutoPlay = () => {
+    setIsAutoPlaying(!isAutoPlaying);
+  };
 
   const countNeighbors = (grid, x, y) => {
     let count = 0;
@@ -114,7 +127,9 @@ const Grid = ({ rows = 20, cols = 20 }) => {
       <div>
         <button type="button" class="btn btn-primary" onClick={createGrid}>Reset</button>
         <button type="button" class="btn btn-primary" onClick={handleNext}>Next</button>
-
+        <button type="button" className="btn btn-primary" onClick={toggleAutoPlay}>
+          {isAutoPlaying ? 'Stop AutoPlay' : 'Start AutoPlay'}
+        </button>
         <div class="form-check form-switch need-margin-top">
           <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked={isHeatMapEnabled} onChange={toggleHeatMap} />
           <label class="form-check-label" for="flexSwitchCheckDefault">Select to Enable Heatmap </label>
