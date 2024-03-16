@@ -5,10 +5,24 @@ const CreditsPage = () => {
   return (
     <>
       <Navbar></Navbar>
-      <div className="text-center p-10">
-        <h2 className="font-bold text-lg mb-4">Credits</h2>
-        <p>Developed by [Yutong Dai & Zilong Zhao]</p>
-        <a href="https://github.com/zhaoz2017/zilong-zhao-assignment2" className="text-blue-500 hover:text-blue-700">GitHub Repository</a>
+      <div class="container-fluid">
+
+        <h1>📝 Credits</h1>
+        <div class="card need-blue-background need-white-color">
+          <div class="card-body">
+            
+            <h2 class="first-h2">Developed by</h2>
+            <p>Yutong Dai</p>
+            <p>Zilong Zhao</p>
+
+            <h2>Github repo</h2>
+            <p>
+              <a href="https://github.com/zhaoz2017/zilong-zhao-assignment2" class="first-h2 need-white-color">https://github.com/zhaoz2017/zilong-zhao-assignment2</a>
+            </p>
+            
+          </div>
+        </div>
+
       </div>
     </>
     

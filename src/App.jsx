@@ -1,3 +1,5 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import React from 'react';
 import { BrowserRouter, Routes,Route } from 'react-router-dom';
 import './App.css'
@@ -6,10 +8,9 @@ import CreditsPage from './pages/CreditsPage';
 import SimulationPage from './pages/SimulationPage';
 
 
-
 function App() {
   return (
-    <div>
+
       <BrowserRouter>
         <Routes>
           <Route index element = {<Home></Home>}></Route>
@@ -18,7 +19,7 @@ function App() {
           <Route path = '/simulation'  element = {<SimulationPage></SimulationPage>}></Route>
         </Routes>
       </BrowserRouter>
-    </div>
+
   );
 }
 

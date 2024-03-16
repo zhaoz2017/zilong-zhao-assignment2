@@ -16,49 +16,72 @@ export default function SimulationPage() {
     };
   
     const handleRowsChange = (event) => {
-        const value = parseInt(event.target.value, 10);
-        if (!isNaN(value)) {
-          setInputRows(value);
+      const value = event.target.value;
+      if (value === '') {
+          setInputRows(''); // 允许输入变为空字符串
           setError('');
-        }
-      };
-    
-    const handleColsChange = (event) => {
-        const value = parseInt(event.target.value, 10);
-        if (!isNaN(value)) {
-            setInputCols(value);
-            setError('');
-        }
-    };
-  
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      if (inputRows !== '' && inputCols !== '' && validateInput(inputRows) && validateInput(inputCols)) {
-        setRows(inputRows);
-        setCols(inputCols);
       } else {
-        setError('Height and width must be between 3 and 40.');
+          const numValue = parseInt(value, 10);
+          if (!isNaN(numValue)) {
+              setInputRows(numValue);
+              setError('');
+          }
       }
-    };
+  };
+  
+  const handleColsChange = (event) => {
+      const value = event.target.value;
+      if (value === '') {
+          setInputCols(''); // 允许输入变为空字符串
+          setError('');
+      } else {
+          const numValue = parseInt(value, 10);
+          if (!isNaN(numValue)) {
+              setInputCols(numValue);
+              setError('');
+          }
+      }
+  };
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // 先转换为数字进行验证
+    const numRows = inputRows !== '' ? parseInt(inputRows, 10) : '';
+    const numCols = inputCols !== '' ? parseInt(inputCols, 10) : '';
+
+    // 然后检查是否为数字以及是否满足validateInput的条件
+    if (numRows !== '' && numCols !== '' && validateInput(numRows) && validateInput(numCols)) {
+        setRows(numRows);
+        setCols(numCols);
+        setError('');
+    } else {
+        setError('Height and width must be between 3 and 40.');
+    }
+  };
   
     return (
         <GridProvider>
-            <div className="">
+            
                 <Navbar></Navbar>
+                
+                <div class="container-fluid">
+                <h1>🏁 Let's game! </h1>
                 <form onSubmit={handleSubmit}>
-                <input
-                    type="number"
-                    value={inputRows}
-                    onChange={handleRowsChange}
-                    placeholder="Height (rows)"
-                />
-                <input
-                    type="number"
-                    value={inputCols}
-                    onChange={handleColsChange}
-                    placeholder="Width (cols)"
-                />
-                <button type="submit">Update Grid</button>
+                  <div class="form-group">
+                    <input
+                      type="number"
+                      value={inputRows}
+                      onChange={handleRowsChange}
+                      placeholder="Height (rows)"
+                    />
+                    <input
+                      type="number"
+                      value={inputCols}
+                      onChange={handleColsChange}
+                      placeholder="Width (cols)"
+                    />
+                  </div>
+                <button type="submit" class="btn btn-primary">Update Grid</button>
                 </form>
                 {error && <p className="error">{error}</p>}
                 <Grid rows={rows} cols={cols} />

@@ -1,29 +1,27 @@
 body {
+  color: #007BFF;
   font-family: Arial Rounded MT Bold;
+}
+
+h1 {
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #B6D9FF;
+  margin-top: 40px;
+  margin-bottom: 10px;
 }
 
 input[type="number"] {
   font-family: Arial Rounded MT Bold;
   font-size: 1.0em;
   margin-right: 8px;
+  margin-top: 8px;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
-
-button {
-  font-family: Arial Rounded MT Bold;
-  font-size: 1.0em;
-  padding: 8px 16px;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
 }
 
 form {
@@ -35,3 +33,27 @@ form {
   margin-top: 10px;
 }
 
+.need-margin-top {
+  margin-top: 8px;
+}
+
+.need-blue-color {
+  color: #007BFF;
+}
+
+.need-white-color {
+  color: white;
+}
+
+.need-red-color {
+  color: #FF8300;
+}
+
+.need-blue-background {
+  background-color: #007BFF;
+}
+
+.first-h2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

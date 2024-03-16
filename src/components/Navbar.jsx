@@ -1,15 +1,22 @@
 // src/components/Navbar.jsx
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-between items-center p-4 bg-blue-500 text-white">
-      <h1 className="font-bold">Game of Life</h1>
-      <div>
-        <Link className="px-4 hover:text-blue-300" to="/">Home</Link>
-        <Link className="px-4 hover:text-blue-300" to="/simulation">Simulation</Link>
-        <Link className="px-4 hover:text-blue-300" to="/credits">Credits</Link>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand">Conway’s Game of Life</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="true" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <NavLink exact to="/" className="nav-link" activeClassName="active">Home</NavLink>
+            <NavLink to="/simulation" className="nav-link" activeClassName="active">Game</NavLink>
+            <NavLink to="/credits" className="nav-link" activeClassName="active">Credits</NavLink>
+          </div>
+        </div>
       </div>
     </nav>
   );

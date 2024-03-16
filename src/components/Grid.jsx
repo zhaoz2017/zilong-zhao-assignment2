@@ -94,9 +94,8 @@ const Grid = ({ rows = 20, cols = 20 }) => {
     updateGrid(newGrid);
   };
 
-
   return (
-    <div>
+    <div class="container-fluid">
       <div className="selected-count">{selectedCount} selected cells</div>
       <div className="grid">
         {grid.map((row, x) => (
@@ -111,16 +110,17 @@ const Grid = ({ rows = 20, cols = 20 }) => {
             ))}
           </div>
         ))}
+      </div >
+      <div>
+        <button type="button" class="btn btn-primary" onClick={createGrid}>Reset</button>
+        <button type="button" class="btn btn-primary" onClick={handleNext}>Next</button>
+
+        <div class="form-check form-switch need-margin-top">
+          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked={isHeatMapEnabled} onChange={toggleHeatMap} />
+          <label class="form-check-label" for="flexSwitchCheckDefault">Select to Enable Heatmap </label>
+        </div>
       </div>
-      <button onClick={createGrid}>Reset</button>
-      <button onClick={handleNext}>Next</button>
-      <label htmlFor="heatmapCheckbox" className="heatmap-checkbox" >
-        Select to Enable Heatmap 
-      </label>
-      <input id="heatmapCheckbox" type="checkbox" checked={isHeatMapEnabled} onChange={toggleHeatMap} />
-      
-
-
+      <h1></h1>
     </div>
   );
 };
