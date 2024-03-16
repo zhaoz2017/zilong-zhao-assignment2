@@ -17,7 +17,9 @@ const CreditsPage = () => {
 
             <h2>Github repo</h2>
             <p>
-              <a href="https://github.com/zhaoz2017/zilong-zhao-assignment2" class="first-h2 need-white-color">https://github.com/zhaoz2017/zilong-zhao-assignment2</a>
+              <a href="https://github.com/zhaoz2017/zilong-zhao-yutong-dai-assignment2" class="first-h2 need-white-color">
+                https://github.com/zhaoz2017/zilong-zhao-yutong-dai-assignment2
+              </a>
             </p>
             
           </div>
