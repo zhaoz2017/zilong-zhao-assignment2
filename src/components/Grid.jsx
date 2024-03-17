@@ -80,10 +80,8 @@ const Grid = ({ rows = 20, cols = 20 }) => {
   };
 
   const getColor = (cell) => {
-    // 如果单元格存活，返回黑色
     if (cell.alive) return 'black';
     
-    // 否则，根据iterationsSinceLastAlive值决定颜色
     const { iterationsSinceLastAlive: iterations } = cell;
     if (isHeatMapEnabled) {
       if (iterations >= 1 && iterations <= 2) return '#007BFF';
@@ -93,7 +91,7 @@ const Grid = ({ rows = 20, cols = 20 }) => {
       if (iterations >= 9 && iterations <= 10) return '#91C6FF';
       return 'white';
     }
-    return 'white'; // iterations > 10 或 cell当前不存活
+    return 'white';
   };
 
   const handleNext = () => {

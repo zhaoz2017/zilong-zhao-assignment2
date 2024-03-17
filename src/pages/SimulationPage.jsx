@@ -18,7 +18,7 @@ export default function SimulationPage() {
     const handleRowsChange = (event) => {
       const value = event.target.value;
       if (value === '') {
-          setInputRows(''); // 允许输入变为空字符串
+          setInputRows('');
           setError('');
       } else {
           const numValue = parseInt(value, 10);
@@ -32,7 +32,7 @@ export default function SimulationPage() {
   const handleColsChange = (event) => {
       const value = event.target.value;
       if (value === '') {
-          setInputCols(''); // 允许输入变为空字符串
+          setInputCols('');
           setError('');
       } else {
           const numValue = parseInt(value, 10);
@@ -45,11 +45,10 @@ export default function SimulationPage() {
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    // 先转换为数字进行验证
+
     const numRows = inputRows !== '' ? parseInt(inputRows, 10) : '';
     const numCols = inputCols !== '' ? parseInt(inputCols, 10) : '';
 
-    // 然后检查是否为数字以及是否满足validateInput的条件
     if (numRows !== '' && numCols !== '' && validateInput(numRows) && validateInput(numCols)) {
         setRows(numRows);
         setCols(numCols);

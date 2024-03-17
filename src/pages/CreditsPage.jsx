@@ -1,4 +1,3 @@
-// src/pages/CreditsPage.jsx
 import React from 'react';
 import Navbar from '../components/Navbar';
 const CreditsPage = () => {
