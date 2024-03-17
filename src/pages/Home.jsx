@@ -49,7 +49,7 @@ export default function Home() {
                 </ol>
 
                 <h2>🧐 So, what’s Conway’s Game of Life? </h2>
-                <p>Conway’s Game of Life (or just, Life, as I will call it) is a game that is “played” based on a grid system. Every individual location on the grid can be understood as a cell. The game, or simulation, occurs over iterations, or generations. After a generation, a cell may change from living or dead based on how many living or dead neighbors it had in a previous iteration. A neighbor is any immediately adjacent spot on the grid (horizontal, vertical or diagonal). We can understand this more clearly with an example and a clear demonstration of the rules.</p>
+                <p>Conway’s Game of Life (or just, Life, as I will call it) is a game that is “played” based on a grid system. Every individual location on the grid can be understood as a cell. The game, or simulation, occurs over iterations, or generations. After a generation, a cell may change from living or dead based on how many living or dead neighbors it had in a previous iteration. A neighbor is any immediately adjacent spot on the grid (horizontal, vertical or diagonal).</p>
 
               </div>
             </div>
